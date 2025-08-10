@@ -163,28 +163,28 @@ TEMPLATE_DIR="$ORIGINAL_SCRIPT_DIR/template-scripts"
 if [[ -d "$TEMPLATE_DIR" ]]; then
     echo "📁 Template directory: $TEMPLATE_DIR"
     echo "📁 Target directory: $(pwd)"
-    
+
     # Copy enhanced Metro script first
     if [[ -f "$TEMPLATE_DIR/enhanced-start-metro.sh" ]]; then
         cp "$TEMPLATE_DIR/enhanced-start-metro.sh" ./start-metro.sh
         chmod +x ./start-metro.sh
         echo "✅ Copied enhanced start-metro.sh → start-metro.sh"
     fi
-    
+
     # Copy smart iOS launch script
     if [[ -f "$TEMPLATE_DIR/smart-ios-launch.sh" ]]; then
         cp "$TEMPLATE_DIR/smart-ios-launch.sh" ./ios-smart-launch.sh
         chmod +x ./ios-smart-launch.sh
         echo "✅ Copied smart-ios-launch.sh → ios-smart-launch.sh"
     fi
-    
+
     # Copy iOS configuration script
     if [[ -f "$TEMPLATE_DIR/configure-ios.sh" ]]; then
         cp "$TEMPLATE_DIR/configure-ios.sh" ./configure-ios.sh
         chmod +x ./configure-ios.sh
         echo "✅ Copied configure-ios.sh"
     fi
-    
+
     # Copy iOS build test script
     if [[ -f "$TEMPLATE_DIR/test-ios-build.sh" ]]; then
         cp "$TEMPLATE_DIR/test-ios-build.sh" ./test-ios-build.sh
@@ -350,18 +350,18 @@ if [[ "$ADD_DOCS" =~ ^[Yy]$ ]]; then
     echo -e "\n${PURPLE}📚 Phase 4: Documentation Integration${NC}"
     echo -e "${PURPLE}===================================${NC}"
     echo "📋 Exporting comprehensive ReactNativeTest documentation..."
-    
+
     # Use the original script directory captured at the beginning
     EXPORT_SCRIPT="$ORIGINAL_SCRIPT_DIR/export-reusable-docs.sh"
-    
+
     echo "🔍 Script location: $ORIGINAL_SCRIPT_DIR"
     echo "📁 Export script: $EXPORT_SCRIPT"
     echo "📁 Target directory: $(pwd)"
-    
+
     # Check if export script exists
     if [[ -f "$EXPORT_SCRIPT" ]]; then
         echo "� Running documentation export script..."
-        
+
         # Run the export script for the current directory
         if "$EXPORT_SCRIPT" "$(pwd)"; then
             echo -e "${GREEN}✅ Documentation export completed successfully!${NC}"
@@ -379,7 +379,7 @@ if [[ "$ADD_DOCS" =~ ^[Yy]$ ]]; then
         echo "# Basic Project Documentation" > docs/README.md
         echo "# GitHub Copilot Instructions - Basic Setup" > .github/copilot-instructions.md
     fi
-    
+
     echo -e "${GREEN}✅ Documentation integration complete${NC}"
 fi
 
@@ -393,8 +393,8 @@ cat > README.md << EOF
 
 $PROJECT_DESCRIPTION
 
-**Created**: $(date +"%Y-%m-%d")  
-**Architecture**: $ARCHITECTURE  
+**Created**: $(date +"%Y-%m-%d")
+**Architecture**: $ARCHITECTURE
 **Based on**: Clean Standalone React Native Creator v3.0
 
 ## 🚀 Quick Start
@@ -532,7 +532,7 @@ echo -e "${PURPLE}=======================================${NC}"
 # Initialize git repository
 if git init; then
     echo -e "${GREEN}✅ Git repository initialized${NC}"
-    
+
     # Add .gitignore if it doesn't exist
     if [[ ! -f .gitignore ]]; then
         echo "📝 Creating .gitignore..."
@@ -569,7 +569,7 @@ android/.gradle/
 *.temp
 EOF
     fi
-    
+
     # Initial commit
     git add .
     if [[ "$ADD_DOCS" = "y" ]]; then
@@ -595,7 +595,7 @@ Created: $(date +"%Y-%m-%d")"
 Architecture: $ARCHITECTURE
 Created: $(date +"%Y-%m-%d")"
     fi
-    
+
     echo -e "${GREEN}✅ Initial commit created${NC}"
 else
     echo -e "${YELLOW}⚠️  Git initialization failed, continuing...${NC}"
